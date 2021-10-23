@@ -1,11 +1,6 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- 
-
-
-## Start the project
+## Start the project - Hello World
 https://reactjs.org/docs/create-a-new-react-app.html
 
 ```
@@ -39,47 +34,6 @@ Deploy to Heroku:
 - Connect to GitHub repo
 - Automatic deploy
 - React Buildpack: https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz
-
-
-```
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
