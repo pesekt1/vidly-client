@@ -1,10 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-
-
 ## Movies list component
 
 We need some data to show:
@@ -99,20 +94,3 @@ function App() {
   );
 }
 ```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
