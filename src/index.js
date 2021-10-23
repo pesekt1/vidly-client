@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 //css will be picked by the webpack and put into the final bundle
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 ReactDOM.render(
   <React.StrictMode>
