@@ -1,10 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-
 ## Delete button
 
 - Add one more row to the movies table for the delete button:
