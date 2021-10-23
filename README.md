@@ -1,11 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-
 ## Like component
 
 Create your own like component based on bootstrap like icon:
