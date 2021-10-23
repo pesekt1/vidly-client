@@ -22,9 +22,24 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 ```
 
+App.js: Use <main> with class "container" from the bootstrap library:
+```javascript
+function App() {
+  return (
+    <main className="container">
+      <h1>Hello world</h1>
+    </main>
+  );
+}
 ```
 
-```
+Deploy to Heroku:
+- Git -> GitHub
+- Heroku - new app
+- Connect to GitHub repo
+- Automatic deploy
+- React Buildpack: https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz
+
 
 ```
 
