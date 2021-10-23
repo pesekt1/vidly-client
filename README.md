@@ -17,6 +17,55 @@ install libraries:
 yarn i bootstrap font-awesome
 ```
 
+```javascript
+import "bootstrap/dist/css/bootstrap.css";
+import "font-awesome/css/font-awesome.css";
+```
+
+```
+
+```
+
+```
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
