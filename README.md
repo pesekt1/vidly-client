@@ -31,7 +31,12 @@ https://getbootstrap.com/docs/4.0/components/pagination/
     - currentPage, 
     - onPageChange
   - Uses propTypes - to set up a type rules
-
+    - Example:
+  
+    ```javascript
+      Pagination.propTypes = {
+        itemsCount: propTypes.number.isRequired,
+    ```
 
 ```javascript
 import React from "react";
@@ -118,8 +123,4 @@ In movies component, we can now show paginated movies:
 ```javascript
 <tbody>
   {paginate(movies, currentPage, pageSize).map((movie) => (
-```
-
-```javascript
-
 ```
