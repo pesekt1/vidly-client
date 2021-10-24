@@ -26,6 +26,10 @@ class Movies extends Component {
     //deleteMovie(movie._id);
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies: movies });
+    //change current page if page empty
+    if (movies.length <= (this.state.currentPage - 1) * this.state.pageSize) {
+      this.setState({ currentPage: this.state.currentPage - 1 });
+    }
   };
 
   handleLike = (movie) => {
@@ -48,6 +52,8 @@ class Movies extends Component {
     const { length: count } = this.state.movies;
     const { currentPage, pageSize, movies, genres, selectedGenre } = this.state;
 
+    console.log(currentPage);
+    console.log(movies.length <= (currentPage - 1) * pageSize);
     if (count === 0) return <p>There are no movies in the database.</p>;
 
     const filteredMovies = selectedGenre
@@ -68,7 +74,7 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <p>Showing {count} movies from the database.</p>
+          <p>Showing {filteredMovies.length} movies from the database.</p>
           <table className="table">
             <thead>
               <tr>
