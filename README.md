@@ -23,8 +23,8 @@ https://getbootstrap.com/docs/4.0/components/list-group/
 Change the structure of movies component - 2 columns, left will be for the listGroup:
 ```javascript
 <div className="row">
-  <div class="col-2">
-  <div class="col-2">
+  <div className="col-3">
+  <div className="col">
 ```
 
 Use componentDidMount() to initialize to load genres and movies, it should not be done directly on the state object.
