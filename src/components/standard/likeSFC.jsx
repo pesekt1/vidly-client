@@ -1,7 +1,7 @@
 import React from "react";
 
 //stateless functional component
-const LikeSFC = () => {
+const LikeSFC = (props) => {
   let dynamicClass = props.liked ? "bi bi-heart-fill m-2" : "bi bi-heart m-2";
   return (
     <i
