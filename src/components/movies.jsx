@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getMovies, deleteMovie } from "../services/fakeMovieService";
-import Like from "./standard/like";
-import Pagination from "./standard/pagination";
+import Like from "./common/like";
+import Pagination from "./common/pagination";
 import { paginate } from "../services/paginate";
 
 class Movies extends Component {
@@ -21,7 +21,7 @@ class Movies extends Component {
     const movies = [...this.state.movies]; // spread operator - no reference
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] }; //clone the object... no reference
-    movies[index].liked = !movies[index].liked;
+    movies[index].liked = !movies[index].liked; //Boolean conversion of null is FALSE
     this.setState({ movies });
   };
 
