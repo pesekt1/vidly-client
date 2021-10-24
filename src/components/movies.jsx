@@ -12,7 +12,7 @@ class Movies extends Component {
     movies: [],
     currentPage: 1,
     pageSize: 4,
-    selectedGenre: {},
+    selectedGenre: null,
   };
 
   componentDidMount() {
@@ -41,7 +41,6 @@ class Movies extends Component {
   };
 
   handleGenreSelect = (genre) => {
-    console.log(genre);
     this.setState({ selectedGenre: genre });
   };
 
@@ -51,13 +50,21 @@ class Movies extends Component {
 
     if (count === 0) return <p>There are no movies in the database.</p>;
 
+    const filteredMovies = selectedGenre
+      ? movies.filter((m) => m.genre._id === selectedGenre._id)
+      : movies;
+
+    const paginatedMovies = paginate(filteredMovies, currentPage, pageSize);
+
     return (
       <div className="row">
         <div className="col-3">
           <ListGroup
-            selectedGenre={selectedGenre}
+            selectedItem={selectedGenre}
             items={genres}
             onItemSelect={this.handleGenreSelect}
+            textProperty="name"
+            valueProperty="_id"
           />
         </div>
         <div className="col">
@@ -74,7 +81,7 @@ class Movies extends Component {
               </tr>
             </thead>
             <tbody>
-              {paginate(movies, currentPage, pageSize).map((movie) => (
+              {paginatedMovies.map((movie) => (
                 <tr key={movie._id}>
                   <td>{movie.title}</td>
                   <td>{movie.genre.name}</td>
@@ -99,7 +106,7 @@ class Movies extends Component {
             </tbody>
           </table>
           <Pagination
-            itemsCount={count}
+            itemsCount={filteredMovies.length}
             pageSize={pageSize}
             currentPage={currentPage}
             onPageChange={this.handlePageChange}

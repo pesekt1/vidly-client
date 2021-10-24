@@ -2,13 +2,14 @@ import React, { Component } from "react";
 
 class ListGroup extends Component {
   render() {
-    const { onItemSelect, items, selectedGenre } = this.props;
+    const { onItemSelect, items, selectedItem, textProperty, valueProperty } =
+      this.props;
 
     return (
       <ul className="list-group">
         <li
           className={
-            !selectedGenre ? "list-group-item active" : "list-group-item"
+            !selectedItem ? "list-group-item active" : "list-group-item"
           }
           onClick={() => onItemSelect()}
         >
@@ -16,15 +17,15 @@ class ListGroup extends Component {
         </li>
         {items.map((item) => (
           <li
-            key={items._id}
+            key={item[valueProperty]}
             onClick={() => onItemSelect(item)}
             className={
-              selectedGenre === item
+              selectedItem === item
                 ? "list-group-item active"
                 : "list-group-item"
             }
           >
-            {item.name}
+            {item[textProperty]}
           </li>
         ))}
       </ul>
