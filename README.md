@@ -1,13 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-
 ## Filtering:
 
 Create a filtering of the movies based on the genre.
@@ -134,10 +126,6 @@ In Pagination we use filteredMovies length:
 ```javascript
 <Pagination
   itemsCount={filteredMovies.length}
-```
-
-```javascript
-
 ```
 
 Handle delete - if we run out of items in current page we need to decrease the current page:
