@@ -52,8 +52,6 @@ class Movies extends Component {
     const { length: count } = this.state.movies;
     const { currentPage, pageSize, movies, genres, selectedGenre } = this.state;
 
-    console.log(currentPage);
-    console.log(movies.length <= (currentPage - 1) * pageSize);
     if (count === 0) return <p>There are no movies in the database.</p>;
 
     const filteredMovies = selectedGenre
