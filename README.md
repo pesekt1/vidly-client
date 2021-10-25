@@ -68,38 +68,92 @@ export default MoviesTable;
 
 - Sorting: We want to sort by each column when we click on the header.
 
-```javascript
+It is better to promote MoviesTable to a class because it should contain the raiseSort method. Like this it will be decoupled from movies component.
 
+If we click on a header, it will switch the sort order.
+
+```javascript
+class MoviesTable extends Component {
+  raiseSort = (path) => {
+    let sortColumn = { ...this.props.sortColumn };
+
+    if (sortColumn.path === path)
+      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
+    else {
+      sortColumn.order = "asc";
+      sortColumn.path = path;
+    }
+    this.props.onSort(sortColumn);
+  };
+
+  render() {
+    const { movies, onLike, onDelete } = this.props;
+
+    return (
+      <table className="table">
+        <thead>
+          <tr>
+            <th onClick={() => this.raiseSort("title")}>Title</th>
+            <th onClick={() => this.raiseSort("genre.name")}>Genre</th>
+            <th onClick={() => this.raiseSort("numberInStock")}>Stock</th>
+            <th onClick={() => this.raiseSort("dailyRentalRate")}>Rate</th>
 ```
 
+- movies component: props for MoviesTable
 ```javascript
-
+<MoviesTable
+  movies={paginatedMovies}
+  onLike={this.handleLike}
+  onDelete={this.handleDelete}
+  onSort={this.handleSort}
+  sortColumn={sortColumn}
+/>
 ```
 
+- movies - add sortColumn to the state:
 ```javascript
-
+class Movies extends Component {
+  state = {
+    genres: [],
+    movies: [],
+    currentPage: 1,
+    pageSize: 4,
+    selectedGenre: null,
+    sortColumn: { path: "title", order: "asc" },
+  };
 ```
 
+- movies - handleSort:
 ```javascript
-
+handleSort = (sortColumn) => {
+  this.setState({ sortColumn: sortColumn });
+};
 ```
 
+- movies - sorting with lodash package:
 ```javascript
-
+const sortedMovies = _.orderBy(
+  filteredMovies,
+  [sortColumn.path],
+  [sortColumn.order]
+);
 ```
 
-```javascript
+Notice, that onSort function is not assigned dirctly, instead, it is raised from raiseSort:
 
+- MoviesTable:
+```javascript
+<th onClick={() => this.raiseSort("title")}>Title</th>
+
+class MoviesTable extends Component {
+raiseSort = (path) => {
+...
+  this.props.onSort(sortColumn);
+};
 ```
 
+- movies:
 ```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
+<MoviesTable
+  onSort={this.handleSort}
 ```
