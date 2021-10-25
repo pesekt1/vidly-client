@@ -84,6 +84,8 @@ class MoviesTable extends Component {
         ...
 ```
 
+- Extract TableBody component:
+
 ```javascript
 
 ```
