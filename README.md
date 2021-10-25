@@ -1,15 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-
 ## Sorting the movies: part 2
 
 We have a MovieTable component with sorting but it cannot be reused for anything else than movies. We can redesign the code and create reusable components like TableHeader and TableBody. Then we can componse MovieTable or any other table from these reusable components which will contain the sorting functionality.
