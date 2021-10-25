@@ -13,6 +13,18 @@ class TableHeader extends React.Component {
     this.props.onSort(sortColumn);
   };
 
+  renderSortIcon = (column) => {
+    const { sortColumn } = this.props;
+    if (column.path !== sortColumn.path) return null; //not sorted column
+
+    //icons from font-awesome-free
+    return sortColumn.order === "asc" ? (
+      <i className="fas fa-sort-up" />
+    ) : (
+      <i className="fas fa-sort-down" />
+    );
+  };
+
   render() {
     const { columns } = this.props;
 
@@ -21,10 +33,11 @@ class TableHeader extends React.Component {
         <tr>
           {columns.map((column) => (
             <th
+              className={column.path ? "clickable" : ""}
               key={column.path || column.key}
               onClick={() => (column.path ? this.raiseSort(column.path) : null)}
             >
-              {column.label}
+              {column.label} {this.renderSortIcon(column)}
             </th>
           ))}
         </tr>
