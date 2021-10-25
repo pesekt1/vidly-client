@@ -5,6 +5,7 @@ class TableBody extends Component {
   render() {
     const { data, columns } = this.props;
 
+    //we take the data and for each item we create cells for each column.
     // _.get() - this allows us to give nested path because for genre the path is genre.name
     return (
       <tbody>
