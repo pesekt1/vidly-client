@@ -17,17 +17,6 @@ class TableBody extends Component {
                   : _.get(item, column.path)}
               </td>
             ))}
-            {/* <td>
-              <Like liked={item.liked} onClick={() => onLike(item)} />
-            </td>
-            <td>
-              <button
-                onClick={() => onDelete(item)}
-                className="btn btn-danger btn-sm"
-              >
-                Delete
-              </button>
-            </td> */}
           </tr>
         ))}
       </tbody>
