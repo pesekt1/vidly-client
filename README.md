@@ -1,19 +1,6 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-
-## Forms
+## Forms - Part 1
 
 Build a login form:
 
@@ -68,6 +55,8 @@ class LoginForm extends React.Component {
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
 ```
+
+### Controlled elements
 
 Improve the login form:
 
@@ -132,40 +121,4 @@ class LoginForm extends React.Component {
     );
   }
 }
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
 ```
