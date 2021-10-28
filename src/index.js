@@ -11,6 +11,7 @@ import "font-awesome/css/font-awesome.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+//the only place where document is accessed directly! In react we work with a virtual DOM.
 ReactDOM.render(
   <BrowserRouter>
     <App />
