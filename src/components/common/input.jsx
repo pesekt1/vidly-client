@@ -12,7 +12,7 @@ class Input extends React.Component {
           type={type}
           id={id}
         />
-        {error && <div className="alert alert alert-danger">error</div>}
+        {error && <div className="alert alert alert-danger">{error}</div>}
       </div>
     );
   }
