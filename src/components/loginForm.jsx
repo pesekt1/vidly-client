@@ -5,6 +5,7 @@ class LoginForm extends React.Component {
   //username and password cannot be null or undefined because they are used as an input value in the form.
   state = {
     account: { username: "", password: "" },
+    errors: {},
   };
 
   handleChange = (e) => {
@@ -14,8 +15,23 @@ class LoginForm extends React.Component {
     this.setState({ account });
   };
 
+  validateInput() {
+    const errors = {};
+    const { account } = this.state;
+    if (account.username.trim("") === "")
+      errors.username = "Username is required";
+    if (account.password.trim("") === "")
+      errors.password = "Password is required";
+
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
+
+    const errors = this.validateInput();
+    this.setState({ errors });
+    if (errors) return;
 
     //call the server
     console.log("submitted");
