@@ -122,10 +122,28 @@ Avoiding an exception if the error is null: validateInput() returns null if no e
     this.setState({ errors: errors || {} }); //if null set it to {} to avoid exception
 ```
 
-```javascript
+Validate input on change: in this case we only validate the property that we are typing:
 
+LoginForm:
+```javascript
+validateInputProperty(propertyName, value) {
+  return value === "" ? `${propertyName} is required` : null;
+}
 ```
 
-```javascript
+onChange - find out if there is an error and append it to existing errors object, or delete the error property from the error object:
 
+```javascript
+  handleChange = (e) => {
+    const errors = { ...this.state.errors }; //no reference
+    const { id, value } = e.currentTarget;
+
+    const propertyError = this.validateInputProperty(id, value);
+    propertyError ? (errors[id] = propertyError) : delete errors[id];
+
+    const account = { ...this.state.account }; //no reference
+    account[id] = value; //this works only because the id is the name of the attribute
+
+    this.setState({ account, errors });
+  };
 ```
