@@ -59,12 +59,30 @@ Now use it in the login form:
           />
 ```
 
+Input validation in the login form:
 ```javascript
+validateInput() {
+  const errors = {};
+  const { account } = this.state;
+  if (account.username.trim("") === "")
+    errors.username = "Username is required";
+  if (account.password.trim("") === "")
+    errors.password = "Password is required";
 
+  return Object.keys(errors).length === 0 ? null : errors;
+}
 ```
 
+handle submit in the login form:
 ```javascript
+handleSubmit = (e) => {
+  e.preventDefault();
 
+  const errors = this.validateInput();
+  this.setState({ errors });
+  if (errors) return;
+
+  //call the server
 ```
 
 ```javascript
