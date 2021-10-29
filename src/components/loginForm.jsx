@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./common/input";
+import Joi from "joi-browser";
 
 class LoginForm extends React.Component {
   //username and password cannot be null or undefined because they are used as an input value in the form.
@@ -8,12 +9,18 @@ class LoginForm extends React.Component {
     errors: {},
   };
 
+  //label is just for rendering the error messages
+  schema = {
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
+  };
+
   handleChange = (e) => {
     const errors = { ...this.state.errors }; //no reference
     const { id, value } = e.currentTarget;
 
     const propertyError = this.validateInputProperty(id, value);
-    propertyError ? (errors[id] = propertyError) : delete errors[id];
+    propertyError ? (errors[id] = propertyError) : delete errors[id]; //add the error or delete
 
     const account = { ...this.state.account }; //no reference
     account[id] = value; //this works only because the id is the name of the attribute
@@ -25,14 +32,14 @@ class LoginForm extends React.Component {
     return value === "" ? `${propertyName} is required` : null;
   }
 
+  //abortEarly: false ... we want to see all the errors, not just the first one.
   validateInput() {
-    const errors = {};
-    const { account } = this.state;
-    if (account.username.trim("") === "")
-      errors.username = "Username is required";
-    if (account.password.trim("") === "")
-      errors.password = "Password is required";
+    const joiOptions = { abortEarly: false };
+    const result = Joi.validate(this.state.account, this.schema, joiOptions);
+    if (!result.error) return null;
 
+    const errors = {};
+    result.error.details.map((d) => (errors[d.path[0]] = d.message)); //path[0] contains the property name
     return Object.keys(errors).length === 0 ? null : errors;
   }
 
