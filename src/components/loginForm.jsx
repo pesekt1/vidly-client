@@ -1,4 +1,6 @@
 import React from "react";
+import Input from "./common/input";
+
 class LoginForm extends React.Component {
   //username and password cannot be null or undefined because they are used as an input value in the form.
   state = {
@@ -26,27 +28,18 @@ class LoginForm extends React.Component {
       <div>
         <h1>Login</h1>
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              onChange={this.handleChange}
-              value={account.username}
-              type="text"
-              className="form-control"
-              id="username"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={this.handleChange}
-              value={account.password}
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-            />
-          </div>
+          <Input
+            onChange={this.handleChange}
+            id="username"
+            value={account.username}
+            type="text"
+          />
+          <Input
+            onChange={this.handleChange}
+            id="password"
+            value={account.password}
+            type="password"
+          />
           <button type="submit" className="btn btn-primary">
             Login
           </button>
