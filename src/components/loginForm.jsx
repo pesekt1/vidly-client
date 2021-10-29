@@ -9,11 +9,21 @@ class LoginForm extends React.Component {
   };
 
   handleChange = (e) => {
-    const account = { ...this.state.account }; //no reference
+    const errors = { ...this.state.errors }; //no reference
     const { id, value } = e.currentTarget;
+
+    const propertyError = this.validateInputProperty(id, value);
+    propertyError ? (errors[id] = propertyError) : delete errors[id];
+
+    const account = { ...this.state.account }; //no reference
     account[id] = value; //this works only because the id is the name of the attribute
-    this.setState({ account });
+
+    this.setState({ account, errors });
   };
+
+  validateInputProperty(propertyName, value) {
+    return value === "" ? `${propertyName} is required` : null;
+  }
 
   validateInput() {
     const errors = {};
