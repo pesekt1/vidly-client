@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
 
     const errors = this.validateInput();
-    this.setState({ errors });
+    this.setState({ errors: errors || {} }); //if null set it to {} to avoid exception
     if (errors) return;
 
     //call the server
@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    const { account } = this.state;
+    const { account, errors } = this.state;
     return (
       <div>
         <h1>Login</h1>
@@ -48,12 +48,14 @@ class LoginForm extends React.Component {
             onChange={this.handleChange}
             id="username"
             value={account.username}
+            error={errors.username}
             type="text"
           />
           <Input
             onChange={this.handleChange}
             id="password"
             value={account.password}
+            error={errors.password}
             type="password"
           />
           <button type="submit" className="btn btn-primary">

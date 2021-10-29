@@ -1,7 +1,7 @@
 import React from "react";
 class Input extends React.Component {
   render() {
-    const { id, value, type } = this.props;
+    const { id, value, type, error } = this.props;
 
     return (
       <div className="form-group">
@@ -12,6 +12,7 @@ class Input extends React.Component {
           type={type}
           id={id}
         />
+        {error && <div className="alert alert alert-danger">error</div>}
       </div>
     );
   }
