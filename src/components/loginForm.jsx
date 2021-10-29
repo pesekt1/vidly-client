@@ -1,5 +1,6 @@
 import React from "react";
 class LoginForm extends React.Component {
+  //username and password cannot be null or undefined because they are used as an input value in the form.
   state = {
     account: { username: "", password: "" },
   };
