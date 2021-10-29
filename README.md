@@ -59,6 +59,8 @@ Now use it in the login form:
           />
 ```
 
+### Input validation
+
 Input validation in the login form:
 ```javascript
 validateInput() {
