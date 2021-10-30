@@ -1,22 +1,8 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-- forms-2
-- forms-3
-
 ## Forms - Part 3
 
+### Using Joi validation library
 Install a Joi library:
 
 ```
@@ -65,7 +51,7 @@ Disable the submit button if there are input errors: We can check the errors in 
 >
 ```
 
-### Code refactoring - extracting the reusable logic from the LoginForm:
+### Code review - extracting the reusable logic from the LoginForm:
 
 Code review: What is reusable?
 
