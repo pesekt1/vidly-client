@@ -77,7 +77,11 @@ class LoginForm extends React.Component {
             error={errors.password}
             type="password"
           />
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={Object.keys(errors).length > 0}
+          >
             Login
           </button>
         </form>
