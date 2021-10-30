@@ -13,6 +13,7 @@
 - routing
 - forms-1
 - forms-2
+- forms-3
 
 ## Forms - Part 3
 
@@ -31,7 +32,7 @@ schema = {
 };
 ```
 
-Now use Joi in he validateInput function:
+Now use Joi in the validateInput function:
 ```javascript
 //abortEarly: false ... we want to see all the errors, not just the first one.
 validateInput() {
@@ -45,8 +46,14 @@ validateInput() {
 }
 ```
 
+validatePropertyInput using Joi: Note that we are dynamically setting the objects using square brackets:
 ```javascript
-
+  validateInputProperty(propertyName, value) {
+    const obj = { [propertyName]: value };
+    const schema = { [propertyName]: this.schema[propertyName] };
+    const result = Joi.validate(obj, schema);
+    return result.error ? result.error.details[0].message : null;
+  }
 ```
 
 ```javascript

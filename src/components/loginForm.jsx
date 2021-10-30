@@ -29,7 +29,10 @@ class LoginForm extends React.Component {
   };
 
   validateInputProperty(propertyName, value) {
-    return value === "" ? `${propertyName} is required` : null;
+    const obj = { [propertyName]: value };
+    const schema = { [propertyName]: this.schema[propertyName] };
+    const result = Joi.validate(obj, schema);
+    return result.error ? result.error.details[0].message : null;
   }
 
   //abortEarly: false ... we want to see all the errors, not just the first one.
@@ -52,7 +55,6 @@ class LoginForm extends React.Component {
 
     //call the server
     console.log("submitted");
-    console.log(this.state.account);
   };
 
   render() {
