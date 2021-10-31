@@ -18,6 +18,35 @@
 
 ## Forms - Part 5
 
+Create a Registration form
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
 ```javascript
 
 ```

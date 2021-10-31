@@ -1,6 +1,6 @@
 import React from "react";
-import Joi from "joi-browser";
 import Input from "./input";
+import Joi from "joi";
 
 class Form extends React.Component {
   state = {
@@ -10,10 +10,10 @@ class Form extends React.Component {
 
   validateInputProperty = (propertyName, value) => {
     const obj = { [propertyName]: value };
-    const schema = { [propertyName]: this.schema[propertyName] };
-    console.log(obj);
-    console.log(schema);
-    const result = Joi.validate(obj, schema);
+    const propertySchema = Joi.object({
+      [propertyName]: this.schema[propertyName],
+    });
+    const result = propertySchema.validate(obj);
     return result.error ? result.error.details[0].message : null;
   };
 
@@ -33,7 +33,10 @@ class Form extends React.Component {
   //abortEarly: false ... we want to see all the errors, not just the first one.
   validateInput() {
     const joiOptions = { abortEarly: false };
-    const result = Joi.validate(this.state.data, this.schema, joiOptions);
+    const result = Joi.object(this.schema).validate(
+      this.state.data,
+      joiOptions
+    );
     if (!result.error) return null;
 
     const errors = {};
