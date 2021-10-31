@@ -99,3 +99,86 @@ class LoginForm extends Form {
 
   render() {
 ```
+
+Extract the submit button from the render method in the loginForm:
+
+From.jsx:
+```javascript
+renderSubmitButton = (label) => {
+  const { errors } = this.state;
+  return (
+    <button
+      type="submit"
+      className="btn btn-primary"
+      disabled={Object.keys(errors).length > 0}
+    >
+      {label}
+    </button>
+  );
+};
+```
+
+Extract the input field from the render method in the loginForm:
+```javascript
+renderInput = (name, label, type) => {
+  const { data, errors } = this.state;
+  return (
+    <Input
+      onChange={this.handleChange}
+      id={name}
+      value={data[name]}
+      error={errors[name]}
+      type={type}
+      label={label}
+    />
+  );
+};
+```
+
+Now we can use the helper methods in our loginFrom:
+```javascript
+render() {
+  return (
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={this.handleSubmit}>
+        {this.renderInput("username", "Username", "text")}
+        {this.renderInput("password", "Password", "password")}
+        {this.renderSubmitButton("Login")}
+```
+
+Simplify the Input component:
+```javascript
+class Input extends React.Component {
+  render() {
+    const { id, error, label, ...rest } = this.props;
+
+    // setting the rest of the parameters dynamically:
+    // {...rest} are all the props that have the same name as the property:
+    // example: onChange={onChange} type={type} value={value}
+    return (
+      <div className="form-group">
+        <label htmlFor={id}>{label}</label>
+        <input className="form-control" id={id} {...rest} />
+        {error && <div className="alert alert alert-danger">{error}</div>}
+      </div>
+    );
+  }
+}
+```
+
+Now when we pass the props to the Input component we have id, error and label, and all the other props come as {...rest}. The condition is that they must have the same name. Example:
+```javascript
+<Input
+  onChange={this.handleChange}
+  id={name}
+  value={data[name]}
+  error={errors[name]}
+  type={type}
+  label={label}
+/>
+```
+
+```javascript
+
+```

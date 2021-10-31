@@ -1,17 +1,15 @@
 import React from "react";
 class Input extends React.Component {
   render() {
-    const { id, value, type, error } = this.props;
+    const { id, error, label, ...rest } = this.props;
 
+    // setting the rest of the parameters dynamically:
+    // {...rest} are all the props that have the same name as the property:
+    // example: onChange={onChange} type={type} value={value}
     return (
       <div className="form-group">
-        <input
-          className="form-control"
-          onChange={this.props.onChange}
-          value={value}
-          type={type}
-          id={id}
-        />
+        <label htmlFor={id}>{label}</label>
+        <input className="form-control" id={id} {...rest} />
         {error && <div className="alert alert alert-danger">{error}</div>}
       </div>
     );
