@@ -101,7 +101,10 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <p>Showing {moviesCount} movies from the database.</p>
+          <button className="btn btn-primary">New Movie</button>
+          <p style={{ "padding-top": 25 }}>
+            Showing {moviesCount} movies from the database.
+          </p>
           <MoviesTable
             movies={paginatedMovies}
             onLike={this.handleLike}
