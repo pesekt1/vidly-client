@@ -25,9 +25,11 @@ class Movies extends Component {
   }
 
   handleDelete = (movie) => {
-    //deleteMovie(movie._id);
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies: movies });
+
+    deleteMovie(movie._id); //fake http service
+
     //change current page if page empty
     if (movies.length <= (this.state.currentPage - 1) * this.state.pageSize) {
       this.setState({ currentPage: this.state.currentPage - 1 });

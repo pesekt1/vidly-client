@@ -11,7 +11,10 @@ class RegisterForm extends Form {
 
   //label is just for rendering the error messages
   schema = {
-    username: Joi.string().required().label("Username"),
+    username: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+      .required()
+      .label("Username"),
     password: Joi.string().required().min(5).label("Password"),
     name: Joi.string().required().label("Name"),
   };
