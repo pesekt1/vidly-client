@@ -1,25 +1,4 @@
-# Vidly client - React.js
-
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-- forms-2
-- forms-3
-- forms-4
-
-## Forms - Part 4
-
-Create a reusable Form component: This component will have all the validation logic.
-```javascript
+import React from "react";
 import Joi from "joi-browser";
 
 class Form extends React.Component {
@@ -71,31 +50,5 @@ class Form extends React.Component {
     this.onSubmit();
   };
 }
-```
 
-Now our LoginForm will extend the Form component: Note that we extracted onSubmit method which will be calling the backend - this will be specific for each form.
-```javascript
-import Input from "./common/input";
-import Joi from "joi-browser";
-import Form from "./common/form";
-
-class LoginForm extends Form {
-  //username and password cannot be null or undefined because they are used as an input value in the form.
-  state = {
-    data: { username: "", password: "" },
-    errors: {},
-  };
-
-  //label is just for rendering the error messages
-  schema = {
-    username: Joi.string().required().label("Username"),
-    password: Joi.string().required().label("Password"),
-  };
-
-  onSubmit = () => {
-    //call the server
-    console.log("submitted");
-  };
-
-  render() {
-```
+export default Form;
