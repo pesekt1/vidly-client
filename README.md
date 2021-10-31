@@ -1,21 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-- forms-2
-- forms-3
-- forms-4
-
 ## Forms - Part 4
 
 Create a reusable Form component: This component will have all the validation logic.
@@ -177,8 +161,4 @@ Now when we pass the props to the Input component we have id, error and label, a
   type={type}
   label={label}
 />
-```
-
-```javascript
-
 ```
