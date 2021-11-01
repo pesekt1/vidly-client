@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./input";
+import Select from "./select";
 import Joi from "joi";
 
 class Form extends React.Component {
@@ -18,6 +19,7 @@ class Form extends React.Component {
   };
 
   handleChange = (e) => {
+    console.log("change handled");
     const errors = { ...this.state.errors }; //no reference
     const { id, value } = e.currentTarget;
 
@@ -30,20 +32,6 @@ class Form extends React.Component {
     this.setState({ data, errors });
   };
 
-  //abortEarly: false ... we want to see all the errors, not just the first one.
-  validateInput() {
-    const joiOptions = { abortEarly: false };
-    const result = Joi.object(this.schema).validate(
-      this.state.data,
-      joiOptions
-    );
-    if (!result.error) return null;
-
-    const errors = {};
-    result.error.details.map((d) => (errors[d.path[0]] = d.message)); //path[0] contains the property name
-    return Object.keys(errors).length === 0 ? null : errors;
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -53,6 +41,22 @@ class Form extends React.Component {
 
     this.onSubmit();
   };
+
+  //abortEarly: false ... we want to see all the errors, not just the first one.
+  validateInput() {
+    const joiOptions = { abortEarly: false };
+    const result = Joi.object(this.schema).validate(
+      this.state.data,
+      joiOptions
+    );
+    console.log(this.state.data);
+    console.log(this.schema);
+    if (!result.error) return null;
+
+    const errors = {};
+    result.error.details.map((d) => (errors[d.path[0]] = d.message)); //path[0] contains the property name
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
 
   renderSubmitButton = (label) => {
     const { errors } = this.state;
@@ -77,6 +81,21 @@ class Form extends React.Component {
         error={errors[name]}
         type={type}
         label={label}
+      />
+    );
+  };
+
+  renderSelect = (name, label, options) => {
+    const { data, errors } = this.state;
+
+    return (
+      <Select
+        onChange={this.handleChange}
+        label={label}
+        id={name}
+        value={data[name]}
+        options={options}
+        error={errors[name]}
       />
     );
   };
