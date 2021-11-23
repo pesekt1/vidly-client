@@ -253,3 +253,5 @@ Solution: We use the validateInput() method:
     );
   };
 ```
+
+Search function
