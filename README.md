@@ -227,6 +227,29 @@ if (!movieInDb._id) {
   movieInDb._id = Date.now().toString();
 ```
 
+Bug in renderSubmitButton in the form component:
 ```javascript
+  renderSubmitButton = (label) => {
+    const { errors } = this.state;
+    return (
+      <button
+        type="submit"
+        className="btn btn-primary"
+        disabled={Object.keys(errors).length > 0}
+      >
+        {label}
+      </button>
+```
 
+When we click on "New Movie" button, the submit button will not be deactivated because there are no errors - validateInput() method was not executed.
+
+Solution: We use the validateInput() method:
+```javascript
+  renderSubmitButton = (label) => {
+    return (
+      <button disabled={this.validateInput()} className="btn btn-primary" type="submit">
+        {label}
+      </button>
+    );
+  };
 ```
