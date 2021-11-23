@@ -254,4 +254,79 @@ Solution: We use the validateInput() method:
   };
 ```
 
-Search function
+SearchBox for movies:
+```javascript
+import React, { Component } from "react";
+
+class Searchbox extends Component {
+  render() {
+    return (
+      <input
+        type="text"
+        name="query"
+        className="form-control my-3"
+        placeholder="Search..."
+        value={this.props.value}
+        onChange={(e) => this.props.onChange(e.currentTarget.value)}
+      ></input>
+    );
+  }
+}
+
+export default Searchbox;
+```
+
+in movies component - in the render method:
+```javascript
+...
+<SearchBox value={searchQuery} onChange={this.handleSearch} />
+<MoviesTable
+...
+```
+
+movies - add variables to the state:
+```javascript
+class Movies extends Component {
+  state = {
+    ...
+    searchQuery: "",
+    selecterGenre: null,
+```
+
+handleSearch method: set the searchQuery in the state, reset selectedGenre and currentPage.
+```javascript
+handleSearch = (query) => {
+  this.setState({ searchQuery: query, selectedGenre: null, currentPage: 1 });
+};
+```
+
+handleGenreSelect - reset the searchQuery. Note: We cannot set it to null. Because searchBox is using this value and it cannot be null or undefined because searchBox is a controlled component.
+```javascript
+handleGenreSelect = (genre) => {
+  this.setState({ selectedGenre: genre, currentPage: 1, searchQuery: "" });
+};
+```
+
+movies - change the filtering logic: 3 options:
+ - searchQuery exists
+ - selectedGenre exists - and it has an _id
+ - none of the above - then we get all movies
+  
+```javascript
+  getPaginatedMovies = () => {
+    ...
+    let filteredMovies = movies;
+    if (searchQuery) {
+      filteredMovies = movies.filter((m) =>
+        m.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    } else if (selectedGenre && selectedGenre._id) {
+      filteredMovies = movies.filter((m) => m.genre._id === selectedGenre._id);
+    }
+```
+
+
+
+```javascript
+
+```
