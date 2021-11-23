@@ -1,22 +1,5 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-- forms-2
-- forms-3
-- forms-4
-- forms-5
-
 ## Forms - Part 5
 
 Note that we removed joi-browser package and instead installed joi package:
