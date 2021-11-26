@@ -8,6 +8,12 @@ import MoviesTable from "./moviesTable";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
+import { getGenres as getRealGenres } from "../services/genreService";
+import {
+  getMovies as getRealMovies,
+  deleteMovie as deleteRealMovie,
+} from "../services/movieService";
+import { toast } from "react-toastify";
 
 class Movies extends Component {
   state = {
@@ -21,18 +27,43 @@ class Movies extends Component {
     selecterGenre: null,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const resultGenres = await getRealGenres();
+    const genres = resultGenres.data;
+    console.log(resultGenres.data);
+
+    const resultMovies = await getRealMovies();
+    const movies = resultMovies.data;
+    console.log(movies);
+
     this.setState({
-      genres: getGenres(),
-      movies: getMovies(),
+      //genres: getGenres(),
+      //movies: getMovies(),
+      genres: genres,
+      movies: movies,
     });
   }
 
-  handleDelete = (movie) => {
+  handleDelete = async (movie) => {
+    const originalMovies = this.state.movies;
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies: movies });
 
-    deleteMovie(movie._id); //fake http service
+    //deleteMovie(movie._id); //fake http service
+    try {
+      await deleteRealMovie(movie._id);
+      console.log("deleting movie");
+    } catch (error) {
+      console.log("trycatch block");
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status < 500
+      ) {
+        toast.error("This movie does not exist.");
+      }
+      this.setState({ movies: originalMovies });
+    }
 
     //change current page if page empty
     if (movies.length <= (this.state.currentPage - 1) * this.state.pageSize) {
