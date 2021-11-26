@@ -1,24 +1,6 @@
 # Vidly client - React.js
 
-## Branches sequence
-- Hello world
-- Movies list component
-- Delete-button
-- like-component
-- pagination
-- filtering
-- sorting-1
-- sorting-2
-- sorting-3
-- routing
-- forms-1
-- forms-2
-- forms-3
-- forms-4
-- forms-5
-- backend-call-1
-
-## backend call - Part 1
+## backend communication - Part 1
 Connecting the web client to the web server application.
 
 ### Set up the web server application
@@ -294,8 +276,4 @@ handleDelete = async (movie) => {
     this.setState({ movies: originalMovies });
   }
 ...
-```
-
-```javascript
-
 ```
