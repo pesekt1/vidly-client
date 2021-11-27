@@ -19,7 +19,7 @@ class Form extends React.Component {
   };
 
   handleChange = (e) => {
-    console.log("change handled");
+    //console.log("change handled");
     const errors = { ...this.state.errors }; //no reference
     const { id, value } = e.currentTarget;
 
@@ -49,8 +49,8 @@ class Form extends React.Component {
       this.state.data,
       joiOptions
     );
-    console.log(this.state.data);
-    console.log(this.schema);
+    //console.log(this.state.data);
+    //console.log(this.schema);
     if (!result.error) return null;
 
     const errors = {};

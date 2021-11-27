@@ -1,6 +1,8 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi";
+import { saveUser } from "../services/userService";
+import { toast } from "react-toastify";
 
 class RegisterForm extends Form {
   //username and password cannot be null or undefined because they are used as an input value in the form.
@@ -16,12 +18,23 @@ class RegisterForm extends Form {
       .required()
       .label("Username"),
     password: Joi.string().required().min(5).label("Password"),
-    name: Joi.string().required().label("Name"),
+    name: Joi.string().min(5).required().label("Name"),
   };
 
-  onSubmit = () => {
+  onSubmit = async () => {
     //call the server
     console.log("registration submitted to the server");
+    try {
+      await saveUser(this.state.data);
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.username = error.response.data; //set error on the username input field
+        this.setState({ errors });
+
+        toast.error(error.response.data); //toast error message
+      }
+    }
   };
 
   //name, label, type

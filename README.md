@@ -18,4 +18,10 @@
 - forms-5
 - backend-comm-1
 - backend-comm-2
+- auth-1
+
+## Authentication & Authorization - Part 1
+
+### Register form
+ 
 
