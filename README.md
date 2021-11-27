@@ -165,15 +165,3 @@ async componentDidMount() {
   await this.populateMove();
 }
 ```
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-```javascript
-
-```
