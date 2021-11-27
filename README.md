@@ -110,8 +110,16 @@ loginForm
   };
 ```
 
-```javascript
+### Auto login upon registration
+registerForm: web server provides x-auth-token item in the deaders. We can get the token from there, save it in browsers localStorage and redirect to the home page.
 
+```javascript
+  onSubmit = async () => {
+    try {
+      const response = await saveUser(this.state.data);
+      localStorage.setItem("token", response.headers["x-auth-token"]);
+      this.props.history.replace("/");
+    } catch (error) {...
 ```
 
 ```javascript

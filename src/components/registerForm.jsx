@@ -25,7 +25,9 @@ class RegisterForm extends Form {
     //call the server
     console.log("registration submitted to the server");
     try {
-      await saveUser(this.state.data);
+      const response = await saveUser(this.state.data);
+      localStorage.setItem("token", response.headers["x-auth-token"]);
+      this.props.history.replace("/");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errors = { ...this.state.errors };
