@@ -89,12 +89,29 @@ loginForm  (same in registerForm):
       window.location = "/"; //we cannot use this.props.history.replace("/");
 ```
 
+logout: components/logout.jsx:
 ```javascript
+import React, { Component } from "react";
 
+class Logout extends React.Component {
+  componentDidMount() {
+    localStorage.removeItem("token");
+    window.location = "/";
+  }
+  render() {
+    return null;
+  }
+}
+
+export default Logout;
 ```
 
+App.js - add route:
 ```javascript
-
+...
+<Switch>
+  <Route path="/logout" component={LogoutForm} />
+  ...
 ```
 
 ```javascript
