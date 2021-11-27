@@ -23,6 +23,7 @@ class LoginForm extends Form {
     try {
       const { data } = await login(this.state.data); //get jwt from web server
       localStorage.setItem("token", data); //save jwt to browser localStorage
+      this.props.history.replace("/"); //redirect to the main page
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errors = { ...this.state.errors };

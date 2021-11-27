@@ -66,13 +66,48 @@ registerForm onSubmit - "Register" button
 We are counting on that 400 bad request will only come because the email is already registered. That is why we set the error to errors.username. Theoretically, the error could happen because of password or name. In that case we should do it differently.
 
 ### Loing form
-loginForm
-```javascript
 
+authService
+```javascript
+import httpService from "./httpService";
+import { apiUrl } from "../config";
+
+const authUrl = apiUrl + "auth/";
+
+export function login(credentials) {
+  console.log(authUrl);
+  return httpService.post(authUrl, mapCredentials(credentials));
+}
+
+//map the credentials - web server expects email attribute instead of username.
+function mapCredentials(credentials) {
+  const standardCredentials = {};
+  standardCredentials.email = credentials.username;
+  standardCredentials.password = credentials.password;
+
+  return standardCredentials;
+}
 ```
 
+loginForm
 ```javascript
+  onSubmit = async () => {
+    try {
+      const { data } = await login(this.state.data); //get jwt from web server
+      localStorage.setItem("token", data); //save jwt to browser localStorage
+      this.props.history.replace("/"); //redirect to the main page
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        const errors = { ...this.state.errors };
+        //set error to both input fields, we dont want to specifi which one was wrong.
+        errors.username = error.response.data;
+        errors.password = error.response.data;
+        this.setState({ errors });
 
+        toast.error(error.response.data);
+      }
+    }
+  };
 ```
 
 ```javascript
