@@ -89,7 +89,9 @@ loginForm  (same in registerForm):
       window.location = "/"; //we cannot use this.props.history.replace("/");
 ```
 
-logout: components/logout.jsx:
+### logout
+
+logout: components/logout.jsx: remove token from the localStorage and redirect the page with full reload.
 ```javascript
 import React, { Component } from "react";
 
@@ -114,10 +116,24 @@ App.js - add route:
   ...
 ```
 
-```javascript
+### Profile page
 
+profile component:
+```javascript
+import React, { Component } from "react";
+
+class Profile extends Component {
+  render() {
+    return <div>User profile page</div>;
+  }
+}
+
+export default Profile;
 ```
 
+App.js:
 ```javascript
-
+...
+<Route path="/profile" component={Profile} />
+...
 ```
