@@ -137,3 +137,39 @@ App.js:
 <Route path="/profile" component={Profile} />
 ...
 ```
+
+### Refactoring
+
+Authenticaton is scattered across many components. We will exctract it into the single service: authService:
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
+
+```javascript
+
+```
