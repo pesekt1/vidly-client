@@ -158,9 +158,12 @@ export function getMovies() {
 ...
 ```
 
-movieForm componentDidMount:
+movieForm componentDidMount: Extract methods - populateGenres, populateMovie:
 ```javascript
-
+async componentDidMount() {
+  await this.populateGenres();
+  await this.populateMove();
+}
 ```
 
 ```javascript
