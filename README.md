@@ -65,6 +65,8 @@ registerForm onSubmit - "Register" button
 
 We are counting on that 400 bad request will only come because the email is already registered. That is why we set the error to errors.username. Theoretically, the error could happen because of password or name. In that case we should do it differently.
 
+### Loing form
+loginForm
 ```javascript
 
 ```
