@@ -21,8 +21,8 @@ class LoginForm extends Form {
     //call the server
     console.log("login submitted to the server");
     try {
-      const { data: jwt } = await login(this.state.data);
-      localStorage.setItem("token", jwt);
+      const { data } = await login(this.state.data); //get jwt from web server
+      localStorage.setItem("token", data); //save jwt to browser localStorage
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errors = { ...this.state.errors };
