@@ -27,7 +27,8 @@ class RegisterForm extends Form {
     try {
       const response = await saveUser(this.state.data);
       localStorage.setItem("token", response.headers["x-auth-token"]);
-      this.props.history.replace("/");
+      //this.props.history.replace("/");
+      window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errors = { ...this.state.errors };

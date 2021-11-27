@@ -23,17 +23,70 @@
 ## Authentication & Authorization - Part 2
 
 ### Getting the current user
-
-```javascript
-
+install dependency:
+```
+yarn add jwt-decode
 ```
 
+App.js: add a state object, in componentDidMount decode the jwt to get the user object and pass it to the NavBar component:
 ```javascript
+import jwtDecode from "jwt-decode";
+...
+class App extends React.Component {
+  state = {};
 
+  componentDidMount() {
+    const jwt = localStorage.getItem("token");
+    const user = jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
+    console.log(user);
+    this.setState({ user: user }); //this will cause re-rendering
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <ToastContainer />
+        <NavBar user={this.state.user} />
+        ...
 ```
 
-```javascript
+NavBar component render method: 
 
+- when logged in, show name and "Logout"
+- otherwise show "Login" and "Register"
+
+```javascript
+{!this.props.user && (
+  <React.Fragment>
+    <NavLink className="nav-item nav-link" to="/login">
+      Login
+    </NavLink>
+    <NavLink className="nav-item nav-link" to="/register">
+      Register
+    </NavLink>
+  </React.Fragment>
+)}
+{this.props.user && (
+  <React.Fragment>
+    <NavLink className="nav-item nav-link" to="/profile">
+      {this.props.user.name}
+    </NavLink>
+    <NavLink className="nav-item nav-link" to="/logout">
+      Logout
+    </NavLink>
+  </React.Fragment>
+)}
+```
+
+When registering or logging in, we need the full page reload to trigger componentDitMount in App.js where we are decoding jwt and getting the user object:
+
+loginForm  (same in registerForm):
+```javascript
+  onSubmit = async () => {
+    try {
+      const { data } = await login(this.state.data); //get jwt from web server
+      localStorage.setItem("token", data); //save jwt to browser localStorage
+      window.location = "/"; //we cannot use this.props.history.replace("/");
 ```
 
 ```javascript
