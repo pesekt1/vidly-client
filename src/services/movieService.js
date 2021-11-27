@@ -1,25 +1,25 @@
 import httpService from "./httpService";
 import { apiUrl } from "../config.json";
 
-const apiEndpoint = apiUrl + "movies/";
+const apiMovies = apiUrl + "movies/";
 
 export function getMovies() {
-  return httpService.get(apiEndpoint);
+  return httpService.get(apiMovies);
 }
 
 export function deleteMovie(movieId) {
-  return httpService.delete(apiEndpoint + movieId);
+  return httpService.delete(apiMovies + movieId);
 }
 
 export function getMovie(movieId) {
-  return httpService.get(apiEndpoint + movieId);
+  return httpService.get(apiMovies + movieId);
 }
 
 export function saveMovie(movie) {
-  if (!movie._id) return httpService.post(apiEndpoint, movie);
+  if (!movie._id) return httpService.post(apiMovies, movie);
 
   //if exist, use put method but remove the _id attribute from the object.
   const data = { ...movie };
   delete data._id;
-  return httpService.put(apiEndpoint + movie._id, data);
+  return httpService.put(apiMovies + movie._id, data);
 }

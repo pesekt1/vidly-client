@@ -118,6 +118,47 @@ onSubmit = async () => {
 };
 ```
 
+### getMovie try-catch block
+movieForm - if movie does not exist we get error.response.status 404, we want to redirect to not-found page.
+```javascript
+  async componentDidMount() {
+    const { data: genres } = await getGenres();
+    this.setState({ genres });
+
+    const movieId = this.props.match.params.id;
+    if (movieId === "new") return;
+
+    try {
+      const { data: movie } = await getMovie(this.props.match.params.id);
+      this.setState({ data: this.mapToViewModel(movie) });
+    } catch (error) {
+      if (error.response && error.response.status === 404)
+        this.props.history.replace("/not-found");
+    }
+  }
+```
+
+### Refactoring
+genreService:
+```javascript
+const apiGenres = apiUrl + "genres/";
+
+export function getGenres() {
+  return httpService.get(apiGenres);
+}
+```
+
+movieService:
+```javascript
+const apiMovies = apiUrl + "movies/";
+
+export function getMovies() {
+  return httpService.get(apiMovies);
+}
+...
+```
+
+movieForm componentDidMount:
 ```javascript
 
 ```
