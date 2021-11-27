@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import { getMovies, deleteMovie } from "../services/fakeMovieService";
 import Pagination from "./common/pagination";
 import { paginate } from "../services/paginate";
 import ListGroup from "./common/listGroup";
-import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
 import { Link } from "react-router-dom";
 import SearchBox from "./common/searchBox";
-import { getGenres as getRealGenres } from "../services/genreService";
-import {
-  getMovies as getRealMovies,
-  deleteMovie as deleteRealMovie,
-} from "../services/movieService";
+import { getGenres } from "../services/genreService";
+import { getMovies, deleteMovie } from "../services/movieService";
 import { toast } from "react-toastify";
 
 class Movies extends Component {
@@ -28,20 +23,10 @@ class Movies extends Component {
   };
 
   async componentDidMount() {
-    const resultGenres = await getRealGenres();
-    const genres = resultGenres.data;
-    console.log(resultGenres.data);
+    const { data: genres } = await getGenres();
+    const { data: movies } = await getMovies();
 
-    const resultMovies = await getRealMovies();
-    const movies = resultMovies.data;
-    console.log(movies);
-
-    this.setState({
-      //genres: getGenres(),
-      //movies: getMovies(),
-      genres: genres,
-      movies: movies,
-    });
+    this.setState({ genres, movies });
   }
 
   handleDelete = async (movie) => {
@@ -49,19 +34,15 @@ class Movies extends Component {
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies: movies });
 
-    //deleteMovie(movie._id); //fake http service
     try {
-      await deleteRealMovie(movie._id);
-      console.log("deleting movie");
+      await deleteMovie(movie._id);
     } catch (error) {
-      console.log("trycatch block");
-      if (
+      const expectedError =
         error.response &&
         error.response.status >= 400 &&
-        error.response.status < 500
-      ) {
-        toast.error("This movie does not exist.");
-      }
+        error.response.status < 500;
+
+      if (expectedError) toast.error("This movie does not exist.");
       this.setState({ movies: originalMovies });
     }
 

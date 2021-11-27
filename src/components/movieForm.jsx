@@ -1,8 +1,8 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi";
-import { getMovie, saveMovie } from "../services/fakeMovieService";
-import { getGenres } from "../services/fakeGenreService";
+import { getMovie, saveMovie } from "../services/movieService";
+import { getGenres } from "../services/genreService";
 
 class MovieForm extends Form {
   //attributes cannot be null or undefined because they are used as an input value in the form.
@@ -26,14 +26,14 @@ class MovieForm extends Form {
     dailyRentalRate: Joi.number().required().label("Rate"),
   };
 
-  componentDidMount() {
-    this.setState({ genres: getGenres() });
+  async componentDidMount() {
+    const { data: genres } = await getGenres();
+    this.setState({ genres });
 
     const movieId = this.props.match.params.id;
-    console.log(movieId);
     if (movieId === "new") return;
 
-    const movie = getMovie(this.props.match.params.id);
+    const { data: movie } = await getMovie(this.props.match.params.id);
     if (!movie) return this.props.history.replace("/not-found");
 
     this.setState({ data: this.mapToViewModel(movie) });
@@ -49,9 +49,8 @@ class MovieForm extends Form {
     };
   }
 
-  onSubmit = () => {
-    //call to the server
-    saveMovie(this.state.data);
+  onSubmit = async () => {
+    await saveMovie(this.state.data);
     console.log("Movie form submitted to the server.");
     this.props.history.push("/movies");
   };
