@@ -3,9 +3,9 @@ import { apiUrl } from "../config";
 
 const authUrl = apiUrl + "auth/";
 
-export function login(credentials) {
-  console.log(authUrl);
-  return httpService.post(authUrl, mapCredentials(credentials));
+async function login(credentials) {
+  const { data } = await httpService.post(authUrl, mapCredentials(credentials));
+  localStorage.setItem("token", data); //save jwt to browser localStorage
 }
 
 //map the credentials - web server expects email attribute instead of username.
@@ -16,3 +16,7 @@ function mapCredentials(credentials) {
 
   return standardCredentials;
 }
+
+const auth = { login };
+
+export default auth;

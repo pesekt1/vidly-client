@@ -38,7 +38,6 @@ class App extends React.Component {
   componentDidMount() {
     const jwt = localStorage.getItem("token");
     const user = jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
-    console.log(user);
     this.setState({ user: user }); //this will cause re-rendering
   }
 

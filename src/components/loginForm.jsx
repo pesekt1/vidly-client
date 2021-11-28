@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi";
 import Form from "./common/form";
-import { login } from "../services/authService";
+import auth from "../services/authService";
 import { toast } from "react-toastify";
 
 class LoginForm extends Form {
@@ -21,8 +21,8 @@ class LoginForm extends Form {
     //call the server
     console.log("login submitted to the server");
     try {
-      const { data } = await login(this.state.data); //get jwt from web server
-      localStorage.setItem("token", data); //save jwt to browser localStorage
+      auth.login(this.state.data); //get jwt from web server and save it to localStorage
+
       //this.props.history.replace("/"); //redirect to the main page
       window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
     } catch (error) {
