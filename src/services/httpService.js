@@ -2,6 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import logService from "./logService";
 
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 //set x-auth-token headers
 function setJwtHeaders(jwt) {
   if (jwt) axios.defaults.headers.common["x-auth-token"] = jwt;

@@ -1,7 +1,6 @@
 import httpService from "./httpService";
-import { apiUrl } from "../config.json";
 
-const registerUrl = apiUrl + "users/";
+const registerUrl = "users/";
 
 //web server expects email property instead of username property.
 function mapUser(user) {

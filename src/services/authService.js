@@ -1,8 +1,7 @@
 import httpService from "./httpService";
-import { apiUrl } from "../config";
 import jwtDecode from "jwt-decode";
 
-const authUrl = apiUrl + "auth/"; //base url
+const authUrl = "auth/"; //base url
 const tokenKey = "token";
 httpService.setJwtHeaders(getJwt()); //set jwt in the headers
 

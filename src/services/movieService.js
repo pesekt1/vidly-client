@@ -1,7 +1,6 @@
 import httpService from "./httpService";
-import { apiUrl } from "../config.json";
 
-const apiMovies = apiUrl + "movies/";
+const apiMovies = "movies/";
 
 export function getMovies() {
   return httpService.get(apiMovies);
