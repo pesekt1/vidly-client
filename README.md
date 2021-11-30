@@ -119,14 +119,25 @@ next();
 We can set isAdmin attribute manualy in our MongoDB database.
 
 ### Showing or hiding elements:
-```javascript
 
+App.js - pass user to the Movies component:
+```javascript
+<Route
+  path="/movies/"
+  render={(props) => <Movies {...props} user={this.state.user} />}
+/>
 ```
 
+Movies component - show New Movie button if user is logged in.
 ```javascript
-
+{this.props.user && (
+  <Link to="/movies/new" className="btn btn-primary">
+    New Movie
+  </Link>
+)}
 ```
 
+Protecting the routes
 ```javascript
 
 ```

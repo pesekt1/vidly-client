@@ -39,9 +39,16 @@ class App extends React.Component {
             <Route path="/customers/" component={Customers} />
             <Route path="/rentals/" component={Rentals} />
             <Route path="/movies/:id" component={MovieForm} />
-            <Route path="/movies/" component={Movies} />
+            <Route
+              path="/movies/"
+              render={(props) => <Movies {...props} user={this.state.user} />}
+            />
             <Route path="/not-found" component={NotFound} />
-            <Route path="/" exact component={Movies} />
+            <Route
+              path="/"
+              exact
+              render={(props) => <Movies {...props} user={this.state.user} />}
+            />
             <Redirect to="/not-found" />
           </Switch>
         </main>
