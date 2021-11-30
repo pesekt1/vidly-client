@@ -2,6 +2,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import logService from "./logService";
 
+//set x-auth-token headers
+function setJwtHeaders(jwt) {
+  if (jwt) axios.defaults.headers.common["x-auth-token"] = jwt;
+}
+
 // Add a response interceptor
 axios.interceptors.response.use(
   function (response) {
@@ -33,6 +38,7 @@ const httpService = {
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
+  setJwtHeaders,
 };
 
 export default httpService;

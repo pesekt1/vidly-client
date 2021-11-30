@@ -2,7 +2,9 @@ import httpService from "./httpService";
 import { apiUrl } from "../config";
 import jwtDecode from "jwt-decode";
 
-const authUrl = apiUrl + "auth/";
+const authUrl = apiUrl + "auth/"; //base url
+const tokenKey = "token";
+httpService.setJwtHeaders(getJwt()); //set jwt in the headers
 
 //map the credentials - web server expects email attribute instead of username.
 function mapCredentials(credentials) {
@@ -15,20 +17,24 @@ function mapCredentials(credentials) {
 
 async function login(credentials) {
   const { data } = await httpService.post(authUrl, mapCredentials(credentials));
-  localStorage.setItem("token", data); //save jwt to browser localStorage
+  localStorage.setItem(tokenKey, data); //save jwt to browser localStorage
 }
 
 function loginWithJwt(jwt) {
-  localStorage.setItem("token", jwt);
+  localStorage.setItem(tokenKey, jwt);
 }
 
 function logout() {
-  localStorage.removeItem("token");
+  localStorage.removeItem(tokenKey);
 }
 
 function getCurrentUser() {
-  const jwt = localStorage.getItem("token");
+  const jwt = localStorage.getItem(tokenKey);
   return jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
+}
+
+function getJwt() {
+  return localStorage.getItem(tokenKey);
 }
 
 const auth = {

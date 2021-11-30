@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi";
-import { saveUser } from "../services/userService";
+import userService from "../services/userService";
 import { toast } from "react-toastify";
 import auth from "../services/authService";
 
@@ -25,7 +25,7 @@ class RegisterForm extends Form {
   onSubmit = async () => {
     console.log("registration submitted to the server");
     try {
-      const response = await saveUser(this.state.data);
+      const response = await userService.save(this.state.data);
       auth.loginWithJwt(response.headers["x-auth-token"]);
       //this.props.history.replace("/");
       window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
