@@ -215,8 +215,14 @@ loginForm: if we were redirected then we should set window.location to the path 
     
 ```
 
-```javascript
+If we log in, we can still access http://localhost:3000/login. We want to redirect to the homepage. Solution:
 
+loginForm:
+```javascript
+...
+render() {
+  if (auth.getCurrentUser()) return <Redirect to="/" />; //if already logged in
+  return (
 ```
 
 ```javascript
