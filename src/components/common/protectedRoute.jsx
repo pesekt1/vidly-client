@@ -10,7 +10,17 @@ class ProtectedRoute extends React.Component {
         path={path}
         {...this.props.rest}
         render={(props) => {
-          if (!authService.getCurrentUser()) return <Redirect to="/login" />;
+          console.log(props);
+          if (!authService.getCurrentUser())
+            return (
+              //The state object can be accessed via this.props.location.state in the redirected-to component.
+              <Redirect
+                to={{
+                  pathname: "/login",
+                  state: { from: props.location },
+                }}
+              />
+            );
           return Component ? <Component {...props} /> : render(props); //React expects component to start with capital letter.
         }}
       />

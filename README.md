@@ -184,6 +184,7 @@ App.js:
 <ProtectedRoute path="/movies/:id" component={MovieForm} />
 ```
 
+### Redirecting after login
 ```javascript
 
 ```

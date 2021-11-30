@@ -25,13 +25,13 @@ class LoginForm extends Form {
     console.log("login submitted to the server");
     try {
       await auth.login(this.state.data); //get jwt from web server and save it to localStorage
-
-      //this.props.history.replace("/"); //redirect to the main page
-      window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
+      const { state } = this.props.location; //if we were redirected from ProtectedRoute, state will be defined
+      window.location = state ? state.from.pathname : "/"; // if redirected, state.from.pathname will contain the route we tried to access.
+      //We reset window.location because we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const errors = { ...this.state.errors };
-        //set error to both input fields, we dont want to specifi which one was wrong.
+        //set error to both input fields, we dont want to specify which one was wrong.
         errors.username = error.response.data;
         errors.password = error.response.data;
         this.setState({ errors });
