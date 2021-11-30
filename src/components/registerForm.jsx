@@ -3,6 +3,7 @@ import Form from "./common/form";
 import Joi from "joi";
 import { saveUser } from "../services/userService";
 import { toast } from "react-toastify";
+import auth from "../services/authService";
 
 class RegisterForm extends Form {
   //username and password cannot be null or undefined because they are used as an input value in the form.
@@ -22,11 +23,10 @@ class RegisterForm extends Form {
   };
 
   onSubmit = async () => {
-    //call the server
     console.log("registration submitted to the server");
     try {
       const response = await saveUser(this.state.data);
-      localStorage.setItem("token", response.headers["x-auth-token"]);
+      auth.loginWithJwt(response.headers["x-auth-token"]);
       //this.props.history.replace("/");
       window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
     } catch (error) {

@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import jwtDecode from "jwt-decode";
 
 import Movies from "./components/movies";
 import NavBar from "./components/navBar";
@@ -13,6 +12,7 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import LogoutForm from "./components/logout";
 import Profile from "./components/profile";
+import auth from "./services/authService";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -21,9 +21,7 @@ class App extends React.Component {
   state = {};
 
   componentDidMount() {
-    const jwt = localStorage.getItem("token");
-    const user = jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
-    console.log(user);
+    const user = auth.getCurrentUser();
     this.setState({ user: user }); //this will cause re-rendering
   }
 

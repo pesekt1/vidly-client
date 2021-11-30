@@ -141,24 +141,92 @@ App.js:
 
 Authenticaton is scattered across many components. We will exctract it into the single service: authService:
 
-```javascript
+We have the authentication logic in following components:
+- App.js
+- registerForm
+- loginForm
+- logout
 
+Put all the functionality in authService:
+```javascript
+import httpService from "./httpService";
+import { apiUrl } from "../config";
+import jwtDecode from "jwt-decode";
+
+const authUrl = apiUrl + "auth/";
+
+//map the credentials - web server expects email attribute instead of username.
+function mapCredentials(credentials) {
+  const standardCredentials = {};
+  standardCredentials.email = credentials.username;
+  standardCredentials.password = credentials.password;
+
+  return standardCredentials;
+}
+
+async function login(credentials) {
+  const { data } = await httpService.post(authUrl, mapCredentials(credentials));
+  localStorage.setItem("token", data); //save jwt to browser localStorage
+}
+
+function loginWithJwt(jwt) {
+  localStorage.setItem("token", jwt);
+}
+
+function logout() {
+  localStorage.removeItem("token");
+}
+
+function getCurrentUser() {
+  const jwt = localStorage.getItem("token");
+  const user = jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
+  return user;
+}
+
+const auth = {
+  login,
+  loginWithJwt,
+  logout,
+  getCurrentUser,
+};
+
+export default auth;
 ```
 
+App.js:
 ```javascript
-
+import auth from "./services/authService";
+...
+componentDidMount() {
+  const user = auth.getCurrentUser();
+  this.setState({ user: user }); //this will cause re-rendering
+}
 ```
 
+loginForm:
 ```javascript
-
+...
+onSubmit = async () => {
+  try {
+    auth.login(this.state.data);
 ```
 
+registerForm:
 ```javascript
-
+...
+onSubmit = async () => {
+  try {
+    const response = await saveUser(this.state.data);
+    auth.loginWithJwt(response.headers["x-auth-token"]);
 ```
 
+logout:
 ```javascript
-
+...
+...
+class Logout extends React.Component {
+  componentDidMount() {
+    auth.logout();
 ```
 
 ```javascript
