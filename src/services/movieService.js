@@ -1,6 +1,6 @@
 import httpService from "./httpService";
 
-const apiMovies = "movies/";
+const apiMovies = "/movies/";
 
 export function getMovies() {
   return httpService.get(apiMovies);

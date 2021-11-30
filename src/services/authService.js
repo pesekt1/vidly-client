@@ -1,7 +1,7 @@
 import httpService from "./httpService";
 import jwtDecode from "jwt-decode";
 
-const authUrl = "auth/"; //base url
+const authUrl = "/auth/"; //base url
 const tokenKey = "token";
 httpService.setJwtHeaders(getJwt()); //set jwt in the headers
 
