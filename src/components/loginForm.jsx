@@ -3,6 +3,7 @@ import Joi from "joi";
 import Form from "./common/form";
 import auth from "../services/authService";
 import { toast } from "react-toastify";
+import { Redirect } from "react-router-dom";
 
 class LoginForm extends Form {
   //username and password cannot be null or undefined because they are used as an input value in the form.
@@ -42,6 +43,7 @@ class LoginForm extends Form {
   };
 
   render() {
+    if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div>
         <h1>Login</h1>

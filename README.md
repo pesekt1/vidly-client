@@ -185,6 +185,40 @@ App.js:
 ```
 
 ### Redirecting after login
+
+Redirect can be used with to = Object: https://v5.reactrouter.com/web/api/Redirect. This allows us to pass the location that we wanted to access before being redirected to the login form: "The state object can be accessed via this.props.location.state in the redirected-to component. "
+
+ProtectedRoute
+```javascript
+...
+return (
+  ...
+  //The state object can be accessed via this.props.location.state in the redirected-to component.
+  <Redirect
+    to={{
+      pathname: "/login",
+      state: { from: props.location },
+    }}
+  />
+```
+
+loginForm: if we were redirected then we should set window.location to the path that we tried to access:
+```javascript
+  onSubmit = async () => {
+    //call the server
+    console.log("login submitted to the server");
+    try {
+      await auth.login(this.state.data); //get jwt from web server and save it to localStorage
+      const { state } = this.props.location; //if we were redirected from ProtectedRoute, state will be defined
+      window.location = state ? state.from.pathname : "/"; // if redirected, state.from.pathname will contain the route we tried to access.
+      //We reset window.location because we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
+    
+```
+
+```javascript
+
+```
+
 ```javascript
 
 ```

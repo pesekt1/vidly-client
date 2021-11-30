@@ -10,7 +10,6 @@ class ProtectedRoute extends React.Component {
         path={path}
         {...this.props.rest}
         render={(props) => {
-          console.log(props);
           if (!authService.getCurrentUser())
             return (
               //The state object can be accessed via this.props.location.state in the redirected-to component.
