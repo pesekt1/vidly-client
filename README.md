@@ -137,7 +137,57 @@ Movies component - show New Movie button if user is logged in.
 )}
 ```
 
-Protecting the routes
+### Protecting the routes
+
+We can still go to the new movie form even when we are not logged in: http://localhost:3000/movies/new
+
+Solution to prevent that: If user is not logged in we redirect to login. We can do something like this:
+
+App.js:
+```javascript
+<Route
+  path="/movies/:id"
+  render={(props) => {
+    if (!this.state.user) return <Redirect to="/login" />;
+    return <MovieForm {...props} />;
+  }}
+/>
+```
+
+Extract ProtectedRoute component - we want to reuse this logic:
+```javascript
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import authService from "../../services/authService";
+
+class ProtectedRoute extends React.Component {
+  render() {
+    const { path, component: Component, render } = this.props; //we need to rename component to Component
+    return (
+      <Route
+        path={path}
+        {...this.props.rest}
+        render={(props) => {
+          if (!authService.getCurrentUser()) return <Redirect to="/login" />;
+          return Component ? <Component {...props} /> : render(props); //React expects component to start with capital letter.
+        }}
+      />
+    );
+  }
+}
+
+export default ProtectedRoute;
+```
+
+App.js:
+```javascript
+<ProtectedRoute path="/movies/:id" component={MovieForm} />
+```
+
+```javascript
+
+```
+
 ```javascript
 
 ```
