@@ -28,8 +28,7 @@ function logout() {
 
 function getCurrentUser() {
   const jwt = localStorage.getItem("token");
-  const user = jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
-  return user;
+  return jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
 }
 
 const auth = {
