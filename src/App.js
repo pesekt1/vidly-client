@@ -27,9 +27,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("api url: ", process.env.REACT_APP_API_URL);
-    console.log("env: ", process.env.NODE_ENV);
-    console.log("app name: ", process.env.REACT_APP_NAME);
     const { user } = this.state;
     return (
       <React.Fragment>
