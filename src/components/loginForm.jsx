@@ -21,7 +21,7 @@ class LoginForm extends Form {
     //call the server
     console.log("login submitted to the server");
     try {
-      auth.login(this.state.data); //get jwt from web server and save it to localStorage
+      await auth.login(this.state.data); //get jwt from web server and save it to localStorage
 
       //this.props.history.replace("/"); //redirect to the main page
       window.location = "/"; //we want full reload - to trigger app.js componentDitMount where we decode jwt to get the user
