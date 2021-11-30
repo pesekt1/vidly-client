@@ -15,7 +15,7 @@ class RegisterForm extends Form {
   //label is just for rendering the error messages
   schema = {
     username: Joi.string()
-      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "dk"] } })
       .required()
       .label("Username"),
     password: Joi.string().required().min(5).label("Password"),
