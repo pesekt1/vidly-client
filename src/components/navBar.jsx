@@ -31,30 +31,38 @@ class NavBar extends Component {
               <NavLink className="nav-item nav-link" to="/customers">
                 Customers
               </NavLink>
-              {!this.props.user && (
-                <React.Fragment>
-                  <NavLink className="nav-item nav-link" to="/login">
-                    Login
-                  </NavLink>
-                  <NavLink className="nav-item nav-link" to="/register">
-                    Register
-                  </NavLink>
-                </React.Fragment>
-              )}
-              {this.props.user && (
-                <React.Fragment>
-                  <NavLink className="nav-item nav-link" to="/profile">
-                    {this.props.user.name}
-                  </NavLink>
-                  <NavLink className="nav-item nav-link" to="/logout">
-                    Logout
-                  </NavLink>
-                </React.Fragment>
-              )}
+              {!this.props.user && this.navBarLoggedOut()}
+              {this.props.user && this.navBarLoggedIn()}
             </div>
           </div>
         </nav>
       </div>
+    );
+  }
+
+  navBarLoggedIn() {
+    return (
+      <React.Fragment>
+        <NavLink className="nav-item nav-link" to="/profile">
+          {this.props.user.name}
+        </NavLink>
+        <NavLink className="nav-item nav-link" to="/logout">
+          Logout
+        </NavLink>
+      </React.Fragment>
+    );
+  }
+
+  navBarLoggedOut() {
+    return (
+      <React.Fragment>
+        <NavLink className="nav-item nav-link" to="/login">
+          Login
+        </NavLink>
+        <NavLink className="nav-item nav-link" to="/register">
+          Register
+        </NavLink>
+      </React.Fragment>
     );
   }
 }
