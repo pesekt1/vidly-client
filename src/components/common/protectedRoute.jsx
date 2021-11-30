@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import authService from "../../services/authService";
+import auth from "../../services/authService";
 
 class ProtectedRoute extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class ProtectedRoute extends React.Component {
         path={path}
         {...this.props.rest}
         render={(props) => {
-          if (!authService.getCurrentUser())
+          if (!auth.getCurrentUser())
             return (
               //The state object can be accessed via this.props.location.state in the redirected-to component.
               <Redirect
