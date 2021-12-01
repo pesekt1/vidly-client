@@ -7,7 +7,7 @@ class NavBar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <NavLink className="navbar-brand" to="/">
-            Vidly
+            Vidly new version
           </NavLink>
           <button
             className="navbar-toggler"
