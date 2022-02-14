@@ -9,7 +9,7 @@ npx create-react-app vidly-client
 
 install libraries:
 ```
-yarn i bootstrap font-awesome
+yarn add bootstrap font-awesome
 ```
 
 ```javascript
