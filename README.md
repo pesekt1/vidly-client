@@ -5,6 +5,8 @@
 ### Using Joi validation library
 Install a Joi library:
 
+https://www.npmjs.com/package/joi-browser
+
 ```
 yarn add joi-browser
 ```
