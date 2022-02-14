@@ -35,9 +35,9 @@ class ListGroup extends Component {
 
 //default props - then we dont need to pass them from the parent component
 
-ListGroup.defaultProps = {
-  textProperty: "name",
-  valueProperty: "_id",
-};
+// ListGroup.defaultProps = {
+//   textProperty: "name",
+//   valueProperty: "_id",
+// };
 
 export default ListGroup;
