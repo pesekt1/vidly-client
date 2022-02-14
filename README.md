@@ -30,7 +30,7 @@ validateInput() {
 
   const errors = {};
   result.error.details.map((d) => (errors[d.path[0]] = d.message)); //path[0] contains the property name
-  return Object.keys(errors).length === 0 ? null : errors;
+  return errors;
 }
 ```
 
