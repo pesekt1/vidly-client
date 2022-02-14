@@ -16,6 +16,8 @@ Wrap the App component in BrowserRouter from react-router-dom.
 
 index.js:
 ```javascript
+import { BrowserRouter } from "react-router-dom";
+
 ReactDOM.render(
   <BrowserRouter>
     <App />
@@ -26,9 +28,9 @@ ReactDOM.render(
 
 Create a NavBar component: use bootstrap: 
 
-https://getbootstrap.com/docs/4.0/components/navbar/
+https://getbootstrap.com/docs/5.0/components/navbar/
 
-replace anchors with NavLinks.
+Replace anchors with NavLinks - we want to avoid refreshing the whole page.
 
 ```javascript
 import { NavLink } from "react-router-dom";
