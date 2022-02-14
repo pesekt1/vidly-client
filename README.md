@@ -70,7 +70,7 @@ Improve the login form:
 we need a state and then control the input elements so that they are synchronized with the state (controlled elements). Otherwise they have their own state.
 
 - value = account.username or account.password
-- onChange... setState...
+- onChange... setState({...})
 
 ```javascript
 class LoginForm extends React.Component {
