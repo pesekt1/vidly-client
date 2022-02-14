@@ -4,7 +4,7 @@
 
 We need some data to show:
 
-Create fake http services to mock the backend - web server.
+Create fake http services to mock the backend - web server. Note that we are using ObjectId data type for MongoDB database.
 
 - fake genre service:
 ```javascript
