@@ -72,7 +72,7 @@ Pagination.propTypes = {
 export default Pagination;
 ```
 
-- Add it to movies component:
+- Add it to the movies component:
 ```javascript
 class Movies extends Component {
   state = {
