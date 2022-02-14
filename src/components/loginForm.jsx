@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
               type="text"
               className="form-control"
               id="username"
+              placeholder="Username"
             />
           </div>
           <div className="form-group">
