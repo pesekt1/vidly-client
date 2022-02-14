@@ -2,7 +2,7 @@
 
 ## Branches sequence
 - Hello world
-- Movies list component
+- Movies component
 - Delete-button
 - like-component
 - pagination
