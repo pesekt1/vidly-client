@@ -2,6 +2,9 @@
 
 ## Forms - Part 1
 
+https://reactjs.org/docs/forms.html
+
+
 Build a login form:
 
 In the navbar add login:
@@ -12,7 +15,7 @@ In the navbar add login:
 ```
 
 Build a LoginForm based on bootstrap:
-https://getbootstrap.com/docs/4.0/components/forms/
+https://getbootstrap.com/docs/5.0/forms
 
 ```javascript
 class LoginForm extends React.Component {
@@ -23,7 +26,11 @@ class LoginForm extends React.Component {
         <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="form-control" id="username" />
+            <input 
+              type="text" 
+              className="form-control" 
+              id="username" 
+              placeholder="Username"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
