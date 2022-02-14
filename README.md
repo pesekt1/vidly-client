@@ -17,6 +17,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 ```
 
+
+Bootstrap: 
+https://getbootstrap.com/
+https://getbootstrap.com/docs/5.1/examples/blog/
+https://getbootstrap.com/docs/5.1/examples/
+
+
+Font-awesome: https://fontawesome.com/
+
+
 App.js: Use <main> with class "container" from the bootstrap library:
 ```javascript
 function App() {
@@ -33,7 +43,7 @@ Deploy to Heroku:
 - Heroku - new app
 - Connect to GitHub repo
 - Automatic deploy
-- React Buildpack: https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz
+- Use React Buildpack for Heroku: https://buildpack-registry.s3.amazonaws.com/buildpacks/mars/create-react-app.tgz
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
