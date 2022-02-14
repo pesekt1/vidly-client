@@ -110,7 +110,7 @@ class MoviesTable extends Component {
 
 - TableBody component:
 
-If a column contains content attribute then call the function that returns the conten. Otherwise use lodash _.get(item, column.path) to show the item:
+If a column contains content attribute then call the function that returns the content. Otherwise use lodash _.get(item, column.path) to show the item:
 
 ```javascript
 import _ from "lodash";
