@@ -130,7 +130,12 @@ const sortedMovies = _.orderBy(
 );
 ```
 
-Notice, that onSort function is not assigned dirctly, instead, it is raised from raiseSort:
+Our data processing pipeline is: 
+
+allMovies ==> filter ==> sort ==> paginate ==> processedMovies
+
+
+Notice, that onSort function is not assigned directly, instead, it is raised from raiseSort:
 
 - MoviesTable:
 ```javascript
