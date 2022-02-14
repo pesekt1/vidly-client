@@ -47,6 +47,15 @@ Now use it in the login form:
 
 ### Input validation
 
+We add errors object in the state in the LoginForm:
+```javascript
+class LoginForm extends React.Component {
+  state = {
+    account: { username: "", password: "" },
+    errors: {},
+  };
+```
+
 Input validation in the login form:
 ```javascript
 validateInput() {
