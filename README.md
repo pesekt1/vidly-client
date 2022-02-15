@@ -13,7 +13,7 @@ npm install
 
 The web server is set up to communicate with a local MongoDB server using mongoose library for ODM - object-document mapping.
 
-Install MongoDB server on your computer and make sure the database server is running.
+Install MongoDB server on your computer and make sure the MongoDB database server is running.
 
 There is a seed.js file to create a vidly database and fill it with some data: run command: 
 ```
@@ -104,6 +104,13 @@ default.json:
   "host": "localhost"
 }
 ```
+
+Now our web server should be ready. Run it and test the endpoints in your browser:
+
+http://localhost:3900/api/genres
+
+http://localhost:3900/api/movies
+
 
 ### Web client - dependencies
 Dependencies: 
