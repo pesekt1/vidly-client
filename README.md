@@ -15,8 +15,6 @@ class Form extends React.Component {
   validateInputProperty = (propertyName, value) => {
     const obj = { [propertyName]: value };
     const schema = { [propertyName]: this.schema[propertyName] };
-    console.log(obj);
-    console.log(schema);
     const result = Joi.validate(obj, schema);
     return result.error ? result.error.details[0].message : null;
   };
