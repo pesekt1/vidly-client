@@ -149,6 +149,9 @@ In componentDidMount:
 onSubmit we save the movie and redirect to movies component.
 
 Note that we used a new component Select: it gets the options array - objects must have _id and name property.
+
+https://getbootstrap.com/docs/5.0/forms/select/
+
 ```javascript
 class Select extends React.Component {
   render() {
@@ -270,7 +273,7 @@ class Movies extends Component {
   state = {
     ...
     searchQuery: "",
-    selecterGenre: null,
+    selectedGenre: null,
 ```
 
 handleSearch method: set the searchQuery in the state, reset selectedGenre and currentPage.
