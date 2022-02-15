@@ -15,10 +15,7 @@ Joi package has different syntax:
 ```javascript
 validateInput() {
   const joiOptions = { abortEarly: false };
-  const result = Joi.object(this.schema).validate(
-    this.state.data,
-    joiOptions
-  );
+  const result = Joi.object(this.schema).validate(this.state.data,joiOptions);
 ```
 
 Create a registration form - use the Form component:
