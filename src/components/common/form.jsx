@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 
+//custom Form class used to share the logic in our custom forms.
 class Form extends React.Component {
   state = {
     data: {},
@@ -48,7 +49,7 @@ class Form extends React.Component {
     this.setState({ errors: errors || {} }); //if null set it to {} to avoid exception
     if (errors) return;
 
-    this.onSubmit();
+    this.onSubmit(); //must be defined in the class which extends Form
   };
 
   renderSubmitButton = (label) => {
