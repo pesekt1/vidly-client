@@ -28,7 +28,7 @@ ReactDOM.render(
 
 Create a NavBar component: use bootstrap: 
 
-https://getbootstrap.com/docs/5.0/components/navbar/
+https://getbootstrap.com/docs/4.0/components/navbar/
 
 Replace anchors with NavLinks - we want to avoid refreshing the whole page.
 
@@ -42,6 +42,17 @@ class NavBar extends Component {
         <NavLink className="navbar-brand" to="/">
           Vidly
         </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink className="nav-item nav-link" to="/movies">
@@ -56,7 +67,30 @@ class NavBar extends Component {
           </div>
         </div>
       </nav>
+    );
+  }
+}
 ```
+
+
+We need JavaScript files for some of the Bootstrap components: https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+In index.html - before the end of the body:
+```html
+    <!-- jquerry and bootstrap bundle for the functionality of some of the bootstrap components -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+</body>
+```
+
 
 Define the routes in App.js and use NavBar above the main container: use Switch, Route, and Redirect from react-router-dom:
 
@@ -87,23 +121,6 @@ If we want some space after the Navbar we can edit the index.css:
 }
 ```
 
-We need JavaScript files for some of the Bootstrap components: https://getbootstrap.com/docs/5.0/getting-started/introduction/
-
-In index.html - before the end of the body:
-```html
-    <!-- jquerry and bootstrap bundle for the functionality of some of the bootstrap components -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-      crossorigin="anonymous"
-    ></script>
-</body>
-```
 
 Create links to movie form - In the Movies we were showing movie title. Now we want to have a link which will lead to the MovieForm component:
 
