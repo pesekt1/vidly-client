@@ -5,8 +5,9 @@ class TableBody extends Component {
   render() {
     const { data, columns } = this.props;
 
-    //we take the data and for each item we create cells for each column.
-    // _.get() - this allows us to give nested path because for genre the path is genre.name
+    //we take the data and for each item we create a row.
+    // then for each column, we create a cell and fill it.
+    // _.get() - this allows us to give nested path because for genre the path is genre.name and we could not use item["genre.name"]
     return (
       <tbody>
         {data.map((item) => (
