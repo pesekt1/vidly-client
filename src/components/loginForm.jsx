@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 
+//LoginForm extends Form which extends React.Component ... inheritance
 class LoginForm extends Form {
   //username and password cannot be null or undefined because they are used as an input value in the form.
   state = {
