@@ -20,7 +20,7 @@ schema = {
 };
 ```
 
-Now use Joi in the validateInput function:
+Now use Joi in the validateInput function. For better understanding, set a breakpoint and run a debugger.
 ```javascript
 //abortEarly: false ... we want to see all the errors, not just the first one.
 validateInput() {
@@ -34,7 +34,7 @@ validateInput() {
 }
 ```
 
-validatePropertyInput using Joi: Note that we are dynamically setting the objects using square brackets:
+validatePropertyInput using Joi: Note that we are dynamically setting the objects using square brackets. For better understanding, set a breakpoint and run a debugger.
 ```javascript
   validateInputProperty(propertyName, value) {
     const obj = { [propertyName]: value };
