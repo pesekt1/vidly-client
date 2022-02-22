@@ -57,6 +57,20 @@ export default MoviesTable;
 />
 ```
 
+Result: We have a grid layout (https://getbootstrap.com/docs/5.0/layout/grid/) with high-level components:
+```javascript
+      <div className="row">
+        <div className="col-3">
+          <ListGroup .../>
+        </div>
+        <div className="col">
+          <p>Showing {filteredMovies.length} movies from the database.</p>
+          <MoviesTable .../>
+          <Pagination .../>
+        </div>
+      </div>
+```
+
 - Sorting: We want to sort by each column when we click on the header.
 
 It is better to promote MoviesTable to a class because it should contain the raiseSort method. Like this it will be decoupled from movies component.
