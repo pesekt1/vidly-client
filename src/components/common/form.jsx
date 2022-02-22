@@ -53,12 +53,11 @@ class Form extends React.Component {
   };
 
   renderSubmitButton = (label) => {
-    const { errors } = this.state;
     return (
       <button
         type="submit"
         className="btn btn-primary"
-        disabled={Object.keys(errors).length > 0}
+        disabled={Object.keys(this.state.errors).length > 0}
       >
         {label}
       </button>
