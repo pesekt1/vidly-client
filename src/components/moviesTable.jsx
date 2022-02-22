@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Like from "./common/like";
 
 class MoviesTable extends Component {
+  //if path was already selected, switch the order.
+  //otherwise set the clicked path with ascending order
   raiseSort = (path) => {
     let sortColumn = { ...this.props.sortColumn };
 
