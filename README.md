@@ -87,6 +87,24 @@ If we want some space after the Navbar we can edit the index.css:
 }
 ```
 
+We need JavaScript files for some of the Bootstrap components: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+In index.html - before the end of the body:
+```html
+    <!-- jquerry and bootstrap bundle for the functionality of some of the bootstrap components -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+</body>
+```
+
 Create links to movie form - In the Movies we were showing movie title. Now we want to have a link which will lead to the MovieForm component:
 
 Edit the columns in MoviesTable - add a content attribute with an arrow function that takes a movie and returns a link to /movies/id and shows movie.title:
