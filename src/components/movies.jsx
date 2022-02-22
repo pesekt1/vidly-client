@@ -65,6 +65,7 @@ class Movies extends Component {
       ? movies.filter((m) => m.genre._id === selectedGenre._id)
       : movies;
 
+    //orderBy takes a collection, array of iteratees, array of orders
     const sortedMovies = _.orderBy(
       filteredMovies,
       [sortColumn.path],
