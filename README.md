@@ -42,6 +42,11 @@ Install font-awesome-free and add the css to our index.js:
 
 https://www.npmjs.com/package/@fortawesome/fontawesome-free
 
+Icons:
+https://fontawesome.com/v5/icons/sort-up?s=solid&f=classic
+
+https://fontawesome.com/v5/icons/sort-down?s=solid&f=classic
+
 index.js:
 ```javascript
 import "@fortawesome/fontawesome-free/css/all.css";
