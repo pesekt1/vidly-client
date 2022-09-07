@@ -46,7 +46,7 @@ class TableHeader extends React.Component {
   - We moved raiseSort function here, now it is fully reusable table header with sorting.
 
 
-Use TableHeader in movies component: define the columns:
+Use TableHeader in MoviesTable component: define the columns:
 
 ```javascript
 import TableHeader from "./common/tableHeader";
