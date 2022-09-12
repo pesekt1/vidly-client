@@ -19,6 +19,7 @@ import GenreForm from "./components/genreForm";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import CustomerForm from "./components/customerForm";
 
 class App extends React.Component {
   state = {};
@@ -40,7 +41,11 @@ class App extends React.Component {
             <Route path="/profile" component={Profile} />
             <Route path="/login/" component={LoginForm} />
             <Route path="/register/" component={RegisterForm} />
-            <Route path="/customers/" component={Customers} />
+            <ProtectedRoute path="/customers/:id" component={CustomerForm} />
+            <Route
+              path="/customers/"
+              render={(props) => <Customers {...props} user={user} />}
+            />
             <Route path="/rentals/" component={Rentals} />
             <ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route
