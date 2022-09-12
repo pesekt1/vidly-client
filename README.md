@@ -291,7 +291,7 @@ router.put("/:id", async (req, res) => {
 ```
 
 ## Create Customers collection in the database:
-We need to create a collection in the database called customers. We can take some sample data set. The one that was used here has following structure:
+We need to create a collection in the database called customers. We can take some sample data set. The one that was used here has following structure (you can find the file in the source code - folder called data):
 
 ```json
 [
