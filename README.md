@@ -24,6 +24,6 @@
 - deployment
 - genres page
 
-## Create genres page
+
 
 
