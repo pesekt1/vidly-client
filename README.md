@@ -22,17 +22,10 @@
 - auth-2
 - auth-3
 - deployment
-- genres page
-- customers page
+- genres-page
+- customers-page
 
-## Customers page
-Create a customers page for the admin to manage customers.
-Create all the necessary components:
-- customerService
-- customers page
-- customerForm
-- customersTable
-- update vidly server app - customer model needs to be updated otherwise we cannot save or update a customer
+## Improvments:
 
 TODO: 
 Pagination component needs improvment - if there are many pages we need Previous and Next buttons and then show only few page numbers.
