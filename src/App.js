@@ -14,6 +14,8 @@ import LogoutForm from "./components/logout";
 import Profile from "./components/profile";
 import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
+import Genres from "./components/genres";
+import GenreForm from "./components/genreForm";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -44,6 +46,11 @@ class App extends React.Component {
             <Route
               path="/movies/"
               render={(props) => <Movies {...props} user={user} />}
+            />
+            <ProtectedRoute path="/genres/:id" component={GenreForm} />
+            <Route
+              path="/genres/"
+              render={(props) => <Genres {...props} user={user} />}
             />
             <Route path="/not-found" component={NotFound} />
             <Route

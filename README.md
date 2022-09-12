@@ -22,3 +22,8 @@
 - auth-2
 - auth-3
 - deployment
+- genres page
+
+## Create genres page
+
+
