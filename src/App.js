@@ -16,7 +16,7 @@ import auth from "./services/authService";
 import ProtectedRoute from "./components/common/protectedRoute";
 import Genres from "./components/genres";
 import GenreForm from "./components/genreForm";
-
+import MoviesGraphic from "./components/moviesGraphic";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import CustomerForm from "./components/customerForm";
@@ -47,6 +47,7 @@ class App extends React.Component {
               render={(props) => <Customers {...props} user={user} />}
             />
             <Route path="/rentals/" component={Rentals} />
+            <Route path="/moviesgraphic/" component={MoviesGraphic} />
             <ProtectedRoute path="/movies/:id" component={MovieForm} />
             <Route
               path="/movies/"

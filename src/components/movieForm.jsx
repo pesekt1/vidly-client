@@ -56,6 +56,7 @@ class MovieForm extends Form {
       genreId: movie.genre._id,
       numberInStock: movie.numberInStock,
       dailyRentalRate: movie.dailyRentalRate,
+      img: movie.img,
     };
   }
 
@@ -66,17 +67,34 @@ class MovieForm extends Form {
   };
 
   render() {
+    const imageUrl = "http://localhost:3000/img/";
+
+    const imgStyle = {
+      backgroundImage: `url(${imageUrl + this.state.data.img})`,
+      backgroundSize: "cover",
+    };
+
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Movie</h1>
-          {this.renderInput("title", "Title", "text")}
-          {this.renderSelect("genreId", "Genre", this.state.genres)}
-          {this.renderInput("numberInStock", "Number in stock", "text")}
-          {this.renderInput("dailyRentalRate", "Rate", "text")}
-          {this.renderSubmitButton("Save")}
-        </form>
-      </div>
+      <>
+        <div className="row">
+          <div className="col-3">
+            {" "}
+            <form onSubmit={this.handleSubmit}>
+              <h1>Movie</h1>
+              {this.renderInput("title", "Title", "text")}
+              {this.renderSelect("genreId", "Genre", this.state.genres)}
+              {this.renderInput("numberInStock", "Number in stock", "text")}
+              {this.renderInput("dailyRentalRate", "Rate", "text")}
+              {this.renderSubmitButton("Save")}
+            </form>
+          </div>
+          <div className="col">
+            <img style={imgStyle} src={imageUrl + this.state.data.img} />
+          </div>
+        </div>
+
+        <div></div>
+      </>
     );
   }
 }

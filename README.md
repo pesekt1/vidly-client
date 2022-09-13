@@ -24,6 +24,7 @@
 - deployment
 - genres-page
 - customers-page
+- movies-graphic
 
 ## Improvments:
 
