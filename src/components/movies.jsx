@@ -79,11 +79,11 @@ class Movies extends Component {
   };
 
   render() {
-    const { currentPage, pageSize, genres, selectedGenre, sortColumn } =
-      this.state;
-
     if (this.state.movies.length === 0)
       return <p>There are no movies in the database.</p>;
+
+    const { currentPage, pageSize, genres, selectedGenre, sortColumn } =
+      this.state;
 
     const { paginatedMovies, moviesCount } = this.getPaginatedMovies();
 
