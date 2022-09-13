@@ -50,6 +50,8 @@ class LoginForm extends React.Component {
 
 Form is by default causing the full page reload on submit. To prevent it, we set up onSubmit function which takes event argument and executes preventDefault function:
 
+https://reactjs.org/docs/events.html
+
 ```javascript
 class LoginForm extends React.Component {
   handleSubmit = (e) => {
