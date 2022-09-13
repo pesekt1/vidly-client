@@ -5,6 +5,7 @@ class LoginForm extends React.Component {
   };
 
   handleChange = (e) => {
+    console.log(e);
     const account = { ...this.state.account }; //no reference
     const { id, value } = e.currentTarget;
     account[id] = value; //this works only because the id is the name of the attribute
@@ -13,6 +14,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e);
 
     //call the server
     console.log("submitted");
