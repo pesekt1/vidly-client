@@ -29,10 +29,12 @@ function logout() {
 
 function getCurrentUser() {
   const jwt = localStorage.getItem(tokenKey);
+  if (jwt === "undefined") return null;
   return jwt ? jwtDecode(jwt) : null; //decodes the jwt payload
 }
 
 function getJwt() {
+  if (localStorage.getItem(tokenKey) === "undefined") return null;
   return localStorage.getItem(tokenKey);
 }
 
